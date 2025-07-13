@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import ParticleBackground from "./ParticleBackground";
+import ParticleBackground from "./particle/ParticleBackground";
 
 const HeroSection = () => {
   return (
