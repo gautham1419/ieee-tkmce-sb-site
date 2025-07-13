@@ -1,18 +1,13 @@
 import { Button } from "@/components/ui/button";
-import heroSpaceBg from "@/assets/hero-space-bg.jpg";
+import ParticleBackground from "./ParticleBackground";
 
 const HeroSection = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex items-center justify-center bg-gradient-cosmic"
-      style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url(${heroSpaceBg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
+      className="relative min-h-screen flex items-center justify-center bg-space-dark"
     >
+      <ParticleBackground />
       <div className="absolute inset-0 bg-gradient-hero"></div>
       
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
