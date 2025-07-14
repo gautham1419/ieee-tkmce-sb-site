@@ -1,64 +1,56 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Code, Users, Trophy, Calendar, UserCheck, Briefcase, GraduationCap } from "lucide-react";
+import { Award, Users, Mic, Code, Briefcase, Rocket, Book, Zap } from "lucide-react";
 
 const ServicesSection = () => {
   const services = [
     {
-      icon: FileText,
-      title: "Technical Publications",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit. Numquam temporibus consectetur",
-      color: "text-green-600",
-      bgColor: "bg-green-50"
+      icon: <Award className="w-12 h-12 text-blue-600" />,
+      title: "Technical Workshops",
+      description: "Hands-on workshops on the latest technologies to enhance your practical skills.",
+      bgColor: "bg-blue-50",
     },
     {
-      icon: Code,
-      title: "Professional development",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit. Numquam temporibus consectetur",
-      color: "text-blue-600",
-      bgColor: "bg-blue-50"
+      icon: <Users className="w-12 h-12 text-green-600" />,
+      title: "Networking Events",
+      description: "Connect with industry professionals, alumni, and peers at our networking sessions.",
+      bgColor: "bg-green-50",
     },
     {
-      icon: Users,
-      title: "Networking opportunities",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit. Numquam temporibus consectetur",
-      color: "text-purple-600",
-      bgColor: "bg-purple-50"
+      icon: <Mic className="w-12 h-12 text-purple-600" />,
+      title: "Guest Lectures",
+      description: "Learn from experts and gain insights into current industry trends and research.",
+      bgColor: "bg-purple-50",
     },
     {
-      icon: Trophy,
-      title: "Technical workshop and seminars",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit. Numquam temporibus consectetur",
-      color: "text-gray-600",
-      bgColor: "bg-gray-50"
+      icon: <Code className="w-12 h-12 text-red-600" />,
+      title: "Coding Competitions",
+      description: "Sharpen your problem-solving skills and compete in exciting hackathons and coding challenges.",
+      bgColor: "bg-red-50",
     },
     {
-      icon: Calendar,
-      title: "Project competition",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit. Numquam temporibus consectetur",
-      color: "text-yellow-600",
-      bgColor: "bg-yellow-50"
+      icon: <Briefcase className="w-12 h-12 text-yellow-600" />,
+      title: "Career Guidance",
+      description: "Receive mentorship and guidance for your career, from resume building to interview prep.",
+      bgColor: "bg-yellow-50",
     },
     {
-      icon: UserCheck,
-      title: "Hackathons and coding challenges",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit. Numquam temporibus consectetur",
-      color: "text-red-600",
-      bgColor: "bg-red-50"
+      icon: <Rocket className="w-12 h-12 text-indigo-600" />,
+      title: "Project Development",
+      description: "Collaborate on innovative projects and turn your creative ideas into reality.",
+      bgColor: "bg-indigo-50",
     },
     {
-      icon: Briefcase,
-      title: "Career Support",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit. Numquam temporibus consectetur",
-      color: "text-orange-600",
-      bgColor: "bg-orange-50"
+      icon: <Book className="w-12 h-12 text-pink-600" />,
+      title: "Publication Support",
+      description: "Get assistance and mentorship for writing and publishing technical papers.",
+      bgColor: "bg-pink-50",
     },
     {
-      icon: GraduationCap,
-      title: "Leadership opportunities",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit. Numquam temporibus consectetur",
-      color: "text-indigo-600",
-      bgColor: "bg-indigo-50"
-    }
+      icon: <Zap className="w-12 h-12 text-teal-600" />,
+      title: "Leadership Training",
+      description: "Develop your leadership and management skills by getting involved in organizational roles.",
+      bgColor: "bg-teal-50",
+    },
   ];
 
   return (
@@ -71,27 +63,18 @@ const ServicesSection = () => {
           <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => {
-            const IconComponent = service.icon;
-            return (
-              <Card key={index} className="shadow-card hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group">
-                <CardHeader className="text-center pb-4">
-                  <div className={`w-16 h-16 ${service.bgColor} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <IconComponent className={`w-8 h-8 ${service.color}`} />
-                  </div>
-                  <CardTitle className="text-lg font-semibold text-foreground">
-                    {service.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {service.description}
-                  </p>
-                </CardContent>
-              </Card>
-            );
-          })}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {services.map((service, index) => (
+            <Card key={index} className={`shadow-lg hover:shadow-xl transition-shadow duration-300 ${service.bgColor}`}>
+              <CardHeader className="flex items-center justify-center pt-6">
+                {service.icon}
+              </CardHeader>
+              <CardContent className="text-center pb-6">
+                <CardTitle className="text-lg font-semibold mb-2">{service.title}</CardTitle>
+                <p className="text-sm text-gray-600 px-2">{service.description}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>

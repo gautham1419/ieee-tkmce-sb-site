@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -6,17 +7,17 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "About Us", href: "#about" },
-    { name: "Chapters", href: "#chapters" },
-    { name: "Events", href: "#events" },
-    { name: "Execom", href: "#execom" },
-    { name: "More", href: "#more" },
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about" },
+    { name: "Chapters", href: "/chapters" },
+    { name: "Events", href: "/events" },
+    { name: "Execom", href: "/execom" },
+    { name: "More", href: "#" },
   ];
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="fixed top-0 w-full z-50 bg-transparent">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2">
@@ -24,29 +25,31 @@ const Header = () => {
               <span className="text-primary-foreground font-bold text-sm">IEEE</span>
             </div>
             <div className="hidden sm:block">
-              <div className="text-sm font-semibold text-foreground">IEEE SB TKMCE</div>
-              <div className="text-xs text-muted-foreground">TKM College of Engineering</div>
+              <div className="text-sm font-semibold text-gray-300">IEEE SB TKMCE</div>
+              <div className="text-xs text-gray-400">TKM College of Engineering</div>
             </div>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200"
+                to={item.href}
+                className="text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors duration-200"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Join IEEE Button */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="sm">
-              Join IEEE
-            </Button>
+            <a href="https://www.ieee.org/membership/join?WT_mc_id=hc_join" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="sm">
+                Join IEEE
+              </Button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -66,19 +69,21 @@ const Header = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border/50">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
-                  className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted/50 rounded-md transition-colors duration-200"
+                  to={item.href}
+                  className="block px-3 py-2 text-base font-medium text-white hover:text-accent hover:bg-white/10 rounded-md transition-colors duration-200"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
               <div className="px-3 py-2">
-                <Button variant="outline" size="sm" className="w-full">
-                  Join IEEE
-                </Button>
+                <a href="https://www.ieee.org/membership/join?WT_mc_id=hc_join" target="_blank" rel="noopener noreferrer" className="w-full">
+                  <Button variant="outline" size="sm" className="w-full">
+                    Join IEEE
+                  </Button>
+                </a>
               </div>
             </div>
           </div>

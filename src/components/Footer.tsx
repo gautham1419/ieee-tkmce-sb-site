@@ -1,134 +1,89 @@
 import { Separator } from "@/components/ui/separator";
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone } from "lucide-react";
 
 const Footer = () => {
-  const quickLinks = [
-    "IEEE Org",
-    "IEEE Digital Library", 
-    "IEEE Collabratec",
-    "IEEE Region 10",
-    "IEEE Kerala Section"
-  ];
+  const linkSections = {
+    "Quick Links": [
+      { name: "IEEE.org", href: "https://www.ieee.org" },
+      { name: "IEEE Xplore Digital Library", href: "https://ieeexplore.ieee.org" },
+      { name: "IEEE Collabratec", href: "https://ieee-collabratec.ieee.org" },
+      { name: "IEEE Region 10", href: "https://r10.ieee.org" },
+      { name: "IEEE Kerala Section", href: "https://ieee-kerala.org" },
+    ],
+    "Membership": [
+      { name: "Join IEEE", href: "https://www.ieee.org/membership/join/index.html" },
+      { name: "Join IEEE Society", href: "https://www.ieee.org/membership/societies.html" },
+      { name: "Renew Membership", href: "https://www.ieee.org/membership/renew.html" },
+    ],
+  };
 
-  const membershipLinks = [
-    "Join IEEE",
-    "Join IEEE Society",
-    "Renew Membership"
-  ];
-
-  const contactInfo = [
-    "IEEE SB Counselor",
-    "Dr. Binu PJ (INEB)",
-    "📧 ✉"
-  ];
-
-  const addresses = [
-    {
-      title: "TKM College of Engineering",
-      location: "Karicode, Kollam",
-      membership: "Renew Membership"
-    },
-    {
-      title: "Chairman",
-      location: "Augustine Waters",
-      membership: "SB PC"
-    },
-    {
-      title: "Vice-chairman", 
-      location: "Hazel Grace",
-      membership: "SB MI"
-    }
+  const socialLinks = [
+    { icon: Facebook, href: "https://www.facebook.com/ieeesbtkmce/" },
+    { icon: Twitter, href: "https://twitter.com/IEEEsbTKMCE" },
+    { icon: Instagram, href: "https://www.instagram.com/ieeesbtkmce/" },
+    { icon: Linkedin, href: "https://in.linkedin.com/company/ieee-sb-tkmce" },
   ];
 
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="bg-gray-900 text-gray-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* IEEE Logo and Description */}
-          <div className="col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-12 h-12 bg-primary-foreground rounded-lg flex items-center justify-center">
-                <span className="text-primary font-bold text-sm">IEEE</span>
+        {/* Top Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+          <div className="lg:col-span-1">
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">IEEE</span>
               </div>
               <div>
-                <div className="text-sm font-bold">IEEE SB TKMCE</div>
-                <div className="text-xs opacity-80">TKM College of Engineering</div>
+                <h2 className="text-white text-xl font-bold">IEEE SB TKMCE</h2>
+                <p className="text-sm text-gray-400">TKM College of Engineering</p>
               </div>
             </div>
-            <p className="text-sm opacity-90 leading-relaxed mb-6">
-              Lorem ipsum dolor sit amet consectetur. Convallis elit dignissim prom lorem tempus lorem. Adipiscing dignissim lorem tortor risus. Sollicitudin lorem cursus. Elementum lobortis cursus tellus cursus cursus.
+            <p className="text-sm leading-relaxed mb-6">
+              A community of students and young professionals dedicated to advancing technology for the benefit of humanity.
             </p>
-            <div className="space-y-2 text-sm">
-              <div>Terms & Conditions</div>
-              <div>Privacy Policy</div>
+            <div className="flex space-x-4">
+              {socialLinks.map((social, index) => (
+                <a key={index} href={social.href} className="text-gray-400 hover:text-white transition-colors">
+                  <social.icon className="w-6 h-6" />
+                </a>
+              ))}
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-sm opacity-90">
-              {quickLinks.map((link, index) => (
-                <li key={index} className="hover:opacity-100 transition-opacity cursor-pointer">
-                  {link}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Membership */}
-          <div>
-            <h3 className="font-semibold mb-4">Membership</h3>
-            <ul className="space-y-2 text-sm opacity-90">
-              {membershipLinks.map((link, index) => (
-                <li key={index} className="hover:opacity-100 transition-opacity cursor-pointer">
-                  {link}
-                </li>
-              ))}
-            </ul>
-            
-            <div className="mt-6">
-              <h4 className="font-semibold mb-2">Contact Us</h4>
-              <div className="space-y-1 text-sm opacity-90">
-                {contactInfo.map((info, index) => (
-                  <div key={index}>{info}</div>
-                ))}
+          <div className="lg:col-span-2 grid grid-cols-2 md:grid-cols-3 gap-8">
+            {Object.entries(linkSections).map(([title, links]) => (
+              <div key={title}>
+                <h3 className="font-semibold text-white mb-4">{title}</h3>
+                <ul className="space-y-2">
+                  {links.map((link) => (
+                    <li key={link.name}>
+                      <a href={link.href} className="text-sm hover:text-white transition-colors">
+                        {link.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
-          </div>
-
-          {/* Address */}
-          <div>
-            <h3 className="font-semibold mb-4">Address</h3>
-            <div className="space-y-4 text-sm opacity-90">
-              {addresses.map((addr, index) => (
-                <div key={index}>
-                  <div className="font-medium">{addr.title}</div>
-                  <div>{addr.location}</div>
-                  <div>{addr.membership}</div>
-                  <div className="flex space-x-2 mt-1">
-                    <span>📧</span>
-                    <span>✉</span>
-                  </div>
-                </div>
-              ))}
+            ))}
+            <div>
+              <h3 className="font-semibold text-white mb-4">Contact Us</h3>
+              <div className="space-y-2 text-sm">
+                <p>Dr. Binu P J (INEB)</p>
+                <a href="mailto:ieeesbtkmce@gmail.com" className="flex items-center gap-2 hover:text-white transition-colors">
+                  <Mail className="w-4 h-4"/> ieeesbtkmce@gmail.com
+                </a>
+                <a href="tel:+919876543210" className="flex items-center gap-2 hover:text-white transition-colors">
+                  <Phone className="w-4 h-4"/> +91 987 654 3210
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        <Separator className="my-8 bg-primary-foreground/20" />
+        <Separator className="bg-gray-700" />
 
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="text-sm opacity-75 mb-4 md:mb-0">
-            © All Rights Reserved by IEEE SB TKMCE | Conceived by walkinyourdream and Developed by EXECOM members
-          </div>
-          
-          <div className="flex space-x-4">
-            <Facebook className="w-5 h-5 opacity-75 hover:opacity-100 transition-opacity cursor-pointer" />
-            <Twitter className="w-5 h-5 opacity-75 hover:opacity-100 transition-opacity cursor-pointer" />
-            <Instagram className="w-5 h-5 opacity-75 hover:opacity-100 transition-opacity cursor-pointer" />
-            <Linkedin className="w-5 h-5 opacity-75 hover:opacity-100 transition-opacity cursor-pointer" />
-          </div>
+        <div className="text-center pt-8 text-sm">
+          <p>&copy; {new Date().getFullYear()} IEEE SB TKMCE. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
