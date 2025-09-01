@@ -4,7 +4,7 @@ const HeroSection = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center py-16 sm:py-24"
+      className="relative min-h-screen flex items-center justify-center py-16 sm:py-24"
     >
       <div className="relative z-10 text-center w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24">
         <h1 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-snug sm:leading-tight">
