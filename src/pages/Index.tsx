@@ -16,17 +16,17 @@ import ParticleBackground from "@/components/particle/ParticleBackground";
 
 const Index = () => {
   return (
-    <div 
-      className="min-h-screen bg-black"
-      style={{
-        backgroundImage: `url('/galaxy.jpg')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-      }}
-    >
+    <div className="min-h-screen bg-black">
+      <div 
+        className="fixed inset-0 w-full h-full z-0"
+        style={{
+          backgroundImage: `url('/galaxy.jpg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
       <ParticleBackground />
-      <div className="relative z-10">
+      <div className="relative z-20">
         <Header />
         <main>
           <HeroSection />
