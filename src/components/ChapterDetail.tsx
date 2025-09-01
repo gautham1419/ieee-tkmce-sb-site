@@ -88,12 +88,9 @@ const ChapterDetail = ({ chapter }: ChapterDetailProps) => {
         <p className="text-lg opacity-80">{chapter.quote.title}</p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-16 items-center my-24 max-w-7xl mx-auto">
-        <img src={chapter.aboutChapter.image} alt="Chapter members" className="rounded-3xl shadow-lg" />
-        <div>
-          <h2 className="text-4xl font-bold mb-4">About Our Chapter!</h2>
-          <p className="text-gray-600 leading-relaxed">{chapter.aboutChapter.text}</p>
-        </div>
+      <div className="my-24 max-w-3xl mx-auto text-center">
+        <h2 className="text-4xl font-bold mb-6">About Our Chapter!</h2>
+        <p className="text-gray-600 leading-relaxed">{chapter.aboutChapter.text}</p>
       </div>
 
       <div className="my-24 max-w-7xl mx-auto">
@@ -115,11 +112,10 @@ const ChapterDetail = ({ chapter }: ChapterDetailProps) => {
         <h2 className="text-3xl font-bold text-center mb-12">What We Do?</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {chapter.activities.map((activity, index) => (
-            <Card key={index} className="overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow">
-              <img src={activity.image} alt={activity.title} className="w-full h-40 object-cover" />
-              <CardContent className="p-4">
-                <h3 className="font-bold">{activity.title}</h3>
-                <p className="text-sm text-gray-600">{activity.text}</p>
+            <Card key={index} className="rounded-2xl shadow-lg hover:shadow-2xl transition-shadow">
+              <CardContent className="p-6">
+                <h3 className="font-bold text-lg mb-2">{activity.title}</h3>
+                <p className="text-gray-600">{activity.text}</p>
               </CardContent>
             </Card>
           ))}

@@ -1,59 +1,89 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 const EventsSection = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const events = [
     {
       id: 1,
-      title: "AKSC'23",
-      subtitle: "ALL KERALA STUDENT CONGRESS",
-      imageUrl: "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80",
-      link: "https://aksc.ieee-mint.org/",
+      title: "EMBS & VTS",
+      subtitle: "CHAPTER INAUGURATION",
+      imageUrl: "/events/embsvts.JPG",
+      sectionId: "embs-vts"
     },
     {
       id: 2,
-      title: "ICSETS'23",
-      subtitle: "INTERNATIONAL CONFERENCE",
-      imageUrl: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      link: "https://tkmce.ac.in/international-conference-ece.php",
+      title: "TinkHerHack 3.0",
+      subtitle: "HACKATHON",
+      imageUrl: "/events/tinkherhack.JPG",
+      sectionId: "tinkherhack"
     },
     {
       id: 3,
-      title: "XTRACT'23",
-      subtitle: "PROJECT EXPO & COMPETITION",
-      imageUrl: "https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      link: "https://www.instagram.com/ieeesbtkmce/",
+      title: "Hack The Future",
+      subtitle: "HACKATHON",
+      imageUrl: "/events/htf.png",
+      sectionId: "hack-the-future"
     },
   ];
 
   return (
-    <section id="major-events" className="py-20 bg-gray-50">
+    <section id="major-events" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 sm:mb-12 gap-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">
             Major Events Hosted
           </h2>
-          <div className="flex space-x-2">
-            <Button variant="outline" size="icon" className="rounded-full w-10 h-10">
-              <ChevronLeft className="w-5 h-5" />
+          <div className="flex space-x-2 w-full sm:w-auto">
+            <Button 
+              variant="outline" 
+              size="icon" 
+              className="rounded-full w-8 h-8 sm:w-10 sm:h-10"
+              aria-label="Previous events"
+            >
+              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </Button>
-            <Button variant="outline" size="icon" className="rounded-full w-10 h-10">
-              <ChevronRight className="w-5 h-5" />
+            <Button 
+              variant="outline" 
+              size="icon" 
+              className="rounded-full w-8 h-8 sm:w-10 sm:h-10"
+              aria-label="Next events"
+            >
+              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </Button>
           </div>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {events.map((event) => (
-            <Card key={event.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <img src={event.imageUrl} alt={event.title} className="w-full h-48 object-cover" />
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{event.title}</h3>
-                <p className="text-sm text-gray-600 uppercase font-medium mb-4">{event.subtitle}</p>
-                <Link to={event.link} target="_blank" rel="noopener noreferrer" className="w-full">
-                  <Button className="mt-4 w-full bg-blue-600 text-white hover:bg-blue-700">Know More</Button>
-                </Link>
+            <Card 
+              key={event.id} 
+              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer h-full flex flex-col"
+              onClick={() => scrollToSection(event.sectionId)}
+            >
+              <div className="relative overflow-hidden pt-[56.25%]">
+                <img 
+                  src={event.imageUrl} 
+                  alt={event.title} 
+                  className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-white font-medium flex items-center text-sm sm:text-base">
+                    View Details <ArrowRight className="ml-2 w-4 h-4" />
+                  </span>
+                </div>
+              </div>
+              <CardContent className="p-4 sm:p-6 flex-1 flex flex-col">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-1 sm:mb-2">{event.title}</h3>
+                <p className="text-xs sm:text-sm text-gray-600 uppercase font-medium mt-auto">{event.subtitle}</p>
               </CardContent>
             </Card>
           ))}

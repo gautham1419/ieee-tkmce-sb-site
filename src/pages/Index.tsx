@@ -7,7 +7,7 @@ import WhatWeOfferSection from "@/components/WhatWeOfferSection";
 import ServicesSection from "@/components/ServicesSection";
 import AlumniTestimonials from "@/components/AlumniTestimonials";
 import TrustedOrganizations from "@/components/TrustedOrganizations";
-import ExuroSection from "@/components/ExuroSection";
+import AuroraSection from "@/components/AuroraSection";
 import EventsSection from "@/components/EventsSection";
 import NewsSection from "@/components/NewsSection";
 import FAQSection from "@/components/FAQSection";
@@ -31,14 +31,18 @@ const Index = () => {
         <main>
           <HeroSection />
           <NewsSection />
+          {/* Temporarily removed as per request
           <AboutSection />
+          */}
           <VisionMissionSection />
           <StatsSection />
           <WhatWeOfferSection />
           <ServicesSection />
+          {/* Temporarily hidden as per request
           <AlumniTestimonials />
+          */}
           <TrustedOrganizations />
-          <ExuroSection />
+          <AuroraSection />
           <EventsSection />
           <FAQSection />
         </main>

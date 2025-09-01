@@ -16,71 +16,102 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-transparent">
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <header className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-sm shadow-sm">
+      <div className="w-full mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">IEEE</span>
+            <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
+              <img 
+                src="/images/ieeelogoblue.png" 
+                alt="IEEE Logo" 
+                className="h-full w-auto object-contain"
+                onError={(e) => {
+                  // Fallback to text if image fails to load
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const fallback = document.createElement('div');
+                  fallback.className = 'w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-lg flex items-center justify-center';
+                  fallback.innerHTML = '<span class="text-primary-foreground font-bold text-xs sm:text-sm">IEEE</span>';
+                  target.parentNode?.insertBefore(fallback, target);
+                }}
+              />
             </div>
-            <div className="hidden sm:block">
-              <div className="text-sm font-semibold text-gray-300">IEEE SB TKMCE</div>
-              <div className="text-xs text-gray-400">TKM College of Engineering</div>
+            <div className="hidden xs:block">
+              <div className="text-xs sm:text-sm font-semibold text-gray-800">IEEE SB TKMCE</div>
+              <div className="text-[10px] xs:text-xs text-gray-500">TKM College of Engineering</div>
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2 xl:space-x-4">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
-                className="text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors duration-200"
+                className="px-2 py-1.5 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200 rounded-md hover:bg-gray-50"
+                onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
           </nav>
 
-          {/* Join IEEE Button */}
-          <div className="hidden md:flex items-center space-x-4">
-            <a href="https://www.ieee.org/membership/join?WT_mc_id=hc_join" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="sm">
+          {/* Desktop CTA Button */}
+          <div className="hidden md:flex items-center">
+            <a 
+              href="https://www.ieee.org/membership/join?WT_mc_id=hc_join" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="ml-2"
+            >
+              <Button variant="outline" size="sm" className="text-xs sm:text-sm">
                 Join IEEE
               </Button>
             </a>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden -mr-1">
             <Button
               variant="ghost"
-              size="sm"
+              size="icon"
+              className="w-9 h-9"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
-              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              {isMenuOpen ? (
+                <X className="w-5 h-5 text-gray-700" />
+              ) : (
+                <Menu className="w-5 h-5 text-gray-700" />
+              )}
             </Button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200 shadow-lg rounded-b-lg">
+          <div className="md:hidden transition-all duration-300 ease-in-out">
+            <div className="px-2 pt-2 pb-4 space-y-1 bg-white border-t border-gray-100 shadow-lg">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className="block px-3 py-2 text-base font-medium text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors duration-200"
+                  className="block px-4 py-3 text-base font-medium text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors duration-200"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
-              <div className="px-3 py-2">
-                <a href="https://www.ieee.org/membership/join?WT_mc_id=hc_join" target="_blank" rel="noopener noreferrer" className="w-full">
-                  <Button variant="outline" size="sm" className="w-full">
+              <div className="px-4 pt-2">
+                <a 
+                  href="https://www.ieee.org/membership/join?WT_mc_id=hc_join" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block w-full"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <Button variant="outline" size="sm" className="w-full text-sm">
                     Join IEEE
                   </Button>
                 </a>

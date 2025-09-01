@@ -41,8 +41,8 @@ const NewsSection = () => {
           <div className="relative h-80 flex items-center justify-center">
             <div className="absolute w-64 h-80 rounded-xl overflow-hidden shadow-2xl transform -rotate-6 transition-transform duration-300 hover:scale-105 z-10">
               <img
-                src="https://i.ibb.co/GvN6hV3/Whats-App-Image-2024-07-13-at-11-05-38-PM.jpg"
-                alt="AKSC'23 Band Event Poster"
+                src="/events/Aurora.jpg"
+                alt="Aurora Event Poster"
                 className="w-full h-full object-cover"
               />
             </div>

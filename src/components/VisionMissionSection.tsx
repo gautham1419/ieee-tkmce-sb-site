@@ -1,11 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 
 const VisionMissionSection = () => {
-  const teamImages = [
-    { src: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1887&auto=format&fit=crop", quote: "Genius is one percent inspiration and ninety-nine percent perspiration.", author: "Thomas Edison" },
-    { src: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932&auto=format&fit=crop", quote: "If you want something said, ask a man; if you want something done, ask a woman.", author: "Margaret Thatcher", className: "mt-8" },
-    { src: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop", quote: "Genius is one percent inspiration and ninety-nine percent perspiration.", author: "Thomas Edison", className: "-mt-4" },
-    { src: "https://images.unsplash.com/photo-1600880292210-85938a0384d7?q=80&w=1887&auto=format&fit=crop", quote: "Genius is one percent inspiration and ninety-nine percent perspiration.", author: "Thomas Edison" },
+  const quotes = [
+    { quote: "Genius is one percent inspiration and ninety-nine percent perspiration.", author: "Thomas Edison" },
+    { quote: "If you want something said, ask a man; if you want something done, ask a woman.", author: "Margaret Thatcher" },
+    { quote: "The best way to predict the future is to invent it.", author: "Alan Kay" },
+    { quote: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs" },
   ];
 
   return (
@@ -33,16 +33,15 @@ const VisionMissionSection = () => {
             </div>
           </div>
 
-          {/* Team Images Grid */}
+          {/* Quotes Grid */}
           <div className="grid grid-cols-2 gap-4">
-            {teamImages.map((item, index) => (
-              <Card key={index} className={`shadow-lg hover:shadow-xl transition-shadow duration-300 ${item.className || ''}`}>
-                <CardContent className="p-3">
-                  <div className="aspect-[4/3] bg-gray-200 rounded-lg mb-3 overflow-hidden">
-                    <img src={item.src} alt={`Team photo ${index + 1}`} className="w-full h-full object-cover" />
-                  </div>
-                  <p className="text-xs text-gray-600 italic">“{item.quote}”</p>
-                  <p className="text-xs text-gray-800 font-semibold mt-2">- {item.author}</p>
+            {quotes.map((item, index) => (
+              <Card key={index} className="shadow-lg hover:shadow-xl transition-shadow duration-300 min-h-full flex flex-col justify-center">
+                <CardContent className="p-6">
+                  <blockquote className="space-y-2">
+                    <p className="text-gray-700 italic">"{item.quote}"</p>
+                    <footer className="text-sm text-gray-800 font-medium">- {item.author}</footer>
+                  </blockquote>
                 </CardContent>
               </Card>
             ))}

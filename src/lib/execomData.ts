@@ -31,7 +31,7 @@ export interface Member {
 const placeholderImage = '/placeholder-pfp.svg';
 
 export const facultyExecom: Member[] = [
-  { name: 'Arun', position: 'Branch Counsellor', image: placeholderImage, societyId: 'main' },
+  { name: 'Dr. Arun A V', position: 'Branch Counsellor', image: placeholderImage, societyId: 'main' },
   { name: 'Dr. Sabeena Beevi K', position: 'Mentor, IAS Advisor', image: placeholderImage, societyId: 'ias' },
   { name: 'Mohammed Mansoor O', position: 'PES Advisor', image: placeholderImage, societyId: 'pes' },
   { name: 'Dr. Bijuna Kunju K', position: 'IES Advisor', image: placeholderImage, societyId: 'ies' },
